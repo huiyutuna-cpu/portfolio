@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <base target="_top">
+  <meta charset="utf-8">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body { font-family: 'Helvetica Neue', Arial, sans-serif; background-color: #f8fafc; }
+    .chart-container { position: relative; height: 280px; width: 100%; }
+  </style>
+</head>
+<body class="p-5">
+
+  <div class="bg-white p-4 rounded-xl shadow-sm mb-6 flex flex-wrap items-center justify-between gap-4">
+    <div class="flex items-center gap-2">
+      <span class="text-xl">📊</span>
+      <h1 class="text-lg font-bold text-gray-800">月度收益數據動態儀表板</h1>
+    </div>
+    <div class="flex items-center gap-4">
+      <div>
+        <label class="block text-xs font-semibold text-gray-500 uppercase">提現幣別</label>
+        <select id="currencyFilter" class="mt-1 block w-32 rounded-md border-gray-300 shadow-sm p-1.5 bg-gray-50 text-sm font-medium" onchange="filterAndRenderCharts()">
+          <option value="ALL">全部幣別</option>
+        </select>
+      </div>
+      <div>
+        <label class="block text-xs font-semibold text-gray-500 uppercase">商戶 (分站号)</label>
+        <select id="merchantFilter" class="mt-1 block w-44 rounded-md border-gray-300 shadow-sm p-1.5 bg-gray-50 text-sm font-medium" onchange="filterAndRenderCharts()">
+          <option value="ALL">全部商戶</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <div class="bg-white p-4 rounded-xl shadow-sm border border-gray-100">
+      <h3 class="text-sm font-bold text-gray-700 mb-2">📈 每月提單筆數變化趨勢</h3>
+      <div class="chart-container"><canvas id="chartCount"></canvas></div>
+    </div>
+    <div class="bg-white p-4 rounded-xl shadow-sm border border-gray-100">
+      <h3 class="text-sm font-bold text-gray-700 mb-2">💰 提現金額加總走勢</h3>
+      <div class="chart-container"><canvas id="chartAmount"></canvas></div>
+    </div>
+    <div class="bg-white p-4 rounded-xl shadow-sm border border-gray-100">
+      <h3 class="text-sm font-bold text-gray-700 mb-2">⚠️ 差額加總走勢</h3>
+      <div class="chart-container"><canvas id="chartDiff"></canvas></div>
+    </div>
+    <div class="bg-white p-4 rounded-xl shadow-sm border border-gray-100">
+      <h3 class="text-sm font-bold text-gray-700 mb-2">💱 每月匯率差額波動</h3>
+      <div class="chart-container"><canvas id="chartRateDiff"></canvas></div>
+    </div>
+  </div>
+
+  <div id="loader" class="fixed inset-0 bg-white bg-opacity-90 flex flex-col items-center justify-center z-50">
+    <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mb-3"></div>
+    <p class="text-gray-600 font-medium text-sm">正在即時讀取最新活數據...</p>
+  </div>
+
+  <script>
+    let rawSheetData = [];
+    let charts = {};
+    const colorPalette = ['#3b82f6','#10b981','#f59e0b','#ec4899','#8b5cf6','#ef4444','#06b6d4','#64748b'];
+
+    window.onload = function() {
+      google.script.run.withSuccessHandler(function(data) {
+        rawSheetData = data;
+        initFilterDropdowns();
+        filterAndRenderCharts();
+        document.getElementById('loader').classList.add('hidden');
+      }).getDashboardData();
+    };
+
+    function initFilterDropdowns() {
+      const currencies = new Set();
+      const merchants  = new Set();
+      rawSheetData.forEach(item => {
+        if (item.currency) currencies.add(item.currency);
+        if (item.merchant) merchants.add(item.merchant);
+      });
+      const curSelect = document.getElementById('currencyFilter');
+      currencies.forEach(cur => {
+        let opt = document.createElement('option');
+        opt.value = cur; opt.innerText = cur; curSelect.appendChild(opt);
+      });
+      const merSelect = document.getElementById('merchantFilter');
+      merchants.forEach(mer => {
+        let opt = document.createElement('option');
+        opt.value = mer; opt.innerText = mer; merSelect.appendChild(opt);
+      });
+    }
+
+    // Prevent Chart.js from interpreting "2026-01" as a time axis
+    function formatToSafeString(monthStr) {
+      return String(monthStr).trim().replace("-", " - ");
+    }
+
+    function filterAndRenderCharts() {
+      const selectedCurrency = document.getElementById('currencyFilter').value;
+      const selectedMerchant = document.getElementById('merchantFilter').value;
+
+      let filtered = rawSheetData.filter(item =>
+        (selectedCurrency === 'ALL' || item.currency === selectedCurrency) &&
+        (selectedMerchant === 'ALL' || item.merchant === selectedMerchant)
+      );
+
+      const rawMonths    = [...new Set(rawSheetData.map(item => String(item.month).trim()))].sort();
+      const displayMonths = rawMonths.map(formatToSafeString);
+
+      let breakDownKey = selectedCurrency === 'ALL' ? 'currency'
+                       : selectedMerchant === 'ALL' ? 'merchant' : '';
+
+      let datasetsMap = { count: {}, amount: {}, diff: {}, rateDiff: {} };
+
+      if (breakDownKey) {
+        filtered.forEach(item => {
+          let group = item[breakDownKey];
+          if (!datasetsMap.count[group]) {
+            datasetsMap.count[group]   = Array(rawMonths.length).fill(0);
+            datasetsMap.amount[group]  = Array(rawMonths.length).fill(0);
+            datasetsMap.diff[group]    = Array(rawMonths.length).fill(0);
+            datasetsMap.rateDiff[group]= Array(rawMonths.length).fill(0);
+          }
+          let mIdx = rawMonths.indexOf(String(item.month).trim());
+          if (mIdx !== -1) {
+            datasetsMap.count[group][mIdx]    += item.count;
+            datasetsMap.amount[group][mIdx]   += item.amountSum;
+            datasetsMap.diff[group][mIdx]     += item.diffSum;
+            datasetsMap.rateDiff[group][mIdx]  = item.rateDiff;
+          }
+        });
+      } else {
+        let label = selectedCurrency !== 'ALL' ? selectedCurrency : '總和';
+        if (selectedMerchant !== 'ALL') label += ` (${selectedMerchant})`;
+        ['count','amount','diff','rateDiff'].forEach(k => {
+          datasetsMap[k][label] = Array(rawMonths.length).fill(0);
+        });
+        filtered.forEach(item => {
+          let mIdx = rawMonths.indexOf(String(item.month).trim());
+          if (mIdx !== -1) {
+            datasetsMap.count[label][mIdx]    += item.count;
+            datasetsMap.amount[label][mIdx]   += item.amountSum;
+            datasetsMap.diff[label][mIdx]     += item.diffSum;
+            datasetsMap.rateDiff[label][mIdx]  = item.rateDiff;
+          }
+        });
+      }
+
+      const makeDatasets = (map, isBar = false) =>
+        Object.keys(map).map((key, i) => ({
+          label: key,
+          data: map[key],
+          borderColor: colorPalette[i % colorPalette.length],
+          backgroundColor: isBar ? colorPalette[i % colorPalette.length] : 'transparent',
+          tension: 0.1,
+          borderRadius: isBar ? 4 : 0
+        }));
+
+      renderSingleChart('chartCount',   'bar',  displayMonths, makeDatasets(datasetsMap.count, true));
+      renderSingleChart('chartAmount',  'line', displayMonths, makeDatasets(datasetsMap.amount));
+      renderSingleChart('chartDiff',    'line', displayMonths, makeDatasets(datasetsMap.diff));
+      renderSingleChart('chartRateDiff','line', displayMonths, makeDatasets(datasetsMap.rateDiff));
+    }
+
+    function renderSingleChart(canvasId, type, labels, datasets) {
+      if (charts[canvasId]) charts[canvasId].destroy();
+      const ctx = document.getElementById(canvasId).getContext('2d');
+      charts[canvasId] = new Chart(ctx, {
+        type: type,
+        data: { labels, datasets },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: { legend: { labels: { boxWidth: 12, font: { size: 11 } } } },
+          scales: {
+            y: { ticks: { font: { size: 10 } }, grid: { color: '#f1f5f9' } },
+            x: {
+              type: 'category',
+              grid: { display: false },
+              ticks: { font: { size: 11, weight: 'bold' }, color: '#475569', maxRotation: 0, autoSkip: false }
+            }
+          }
+        }
+      });
+    }
+  </script>
+</body>
+</html>
