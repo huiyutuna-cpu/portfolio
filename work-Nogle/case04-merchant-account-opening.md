@@ -1,4 +1,4 @@
-# Case 05 — Merchant Account Opening System
+# Case 04 — Merchant Account Opening System
 
 > **Role**: Payment Operations Analyst @ Nogle
 > **Tools**: Google Apps Script · Google Sheets · HTML/CSS/JS · Telegram Bot API
