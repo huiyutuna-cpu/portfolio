@@ -19,11 +19,12 @@ Currently transitioning toward product management, with a focus on user behavior
 
 | # | Project | What it does | Tools |
 |---|---------|-------------|-------|
-| 01 | [USDT Payout Profit & Capital Flow Dashboard](./case01-usdt-payout-dashboard.md) | Automated exchange rate margin tracking + merchant capital visibility for 30+ merchants | GAS, AppSheet, Chart.js |
-| 02 | Settlement Reconciliation System | *(coming soon)* | GAS, AppSheet |
-| 03 | CS Knowledge Base | *(coming soon)* | Confluence, GAS |
-| 04 | Merchant Management System | *(coming soon)* | AppSheet |
-| 05 | Channel Monitoring Dashboard | *(coming soon)* | GAS, Sheets |
+| 01 | [USDT Payout Profit & Capital Flow Dashboard](./work-Nogle/case01-usdt-payout-dashboard.md) | Automated exchange rate margin tracking + merchant capital visibility for 30+ merchants | GAS, AppSheet, Chart.js |
+| 02 | [Monthly Merchant & Revenue Auto-Analysis](./work-Nogle/case02-monthly-merchant-revenue-analysis.md) | Monthly automated merchant KPI report: 30+ merchants, multi-currency revenue breakdown | GAS, Sheets |
+| 03 | [Daily OPS Data Analysis System](./work-Nogle/case03-daily-ops-data-analysis.md) | Daily automated analytics pipeline: 30+ merchants, 8 currencies, 10+ PSPs — PSP scoring, heatmaps, TG push | GAS, Telegram Bot, Slack API, Drive API |
+| 04 | CS Knowledge Base | *(coming soon)* | Confluence, GAS |
+| 05 | Merchant Management System | *(coming soon)* | AppSheet |
+| 06 | Channel Monitoring Dashboard | *(coming soon)* | GAS, Sheets |
 
 ---
 
