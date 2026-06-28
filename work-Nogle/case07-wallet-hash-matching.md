@@ -82,6 +82,8 @@ executeMappingEngine(isForceAll)
 | INR OTC handling | No standard hash → manual only | Amount + date fallback matching |
 | Multi-wallet support | 3 separate ad-hoc processes | Single config-driven engine |
 | Re-reconciliation | Redo manually | One-click force-run |
+| Processing speed | Slow — repeated Sheets reads per row | All sources loaded once; 100+ rows complete in seconds |
+| Match rate | Low — manual lookup misses rows | High — hash matching + amount/date fallback covers edge cases |
 
 ---
 
