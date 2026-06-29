@@ -139,3 +139,6 @@ If one platform's data hasn't been uploaded yet, a confirm dialog lets the opera
 ---
 
 *Full case study with screenshots → [Notion Portfolio](https://notion.so) (link TBD)*
+
+---
+*Code available on request.*

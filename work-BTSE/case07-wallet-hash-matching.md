@@ -115,3 +115,6 @@ Normal runs skip rows where col A is already filled (incremental update). Force-
 ---
 
 *Full case study → [Notion Portfolio](https://notion.so) (link TBD)*
+
+---
+*Code available on request.*

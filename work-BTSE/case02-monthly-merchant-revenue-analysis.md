@@ -63,3 +63,6 @@ This maps directly to the three questions management asks every month.
 ---
 
 *Full case study with screenshots → [Notion Portfolio](https://notion.so) (link TBD)*
+
+---
+*Code available on request.*

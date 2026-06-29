@@ -163,3 +163,6 @@ Agent rates and service rates are stored in 商戶＆代理 as decimals (e.g. `0
 ---
 
 *Full case study with screenshots → [Notion Portfolio](https://notion.so) (link TBD)*
+
+---
+*Code available on request.*

@@ -55,3 +55,6 @@ Built closed-month locking early — historical data is locked once a month pass
 ---
 
 *Full case study with screenshots → [Notion Portfolio](https://notion.so) (link TBD)*
+
+---
+*Code available on request.*

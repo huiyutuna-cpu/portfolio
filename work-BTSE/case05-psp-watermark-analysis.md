@@ -177,3 +177,6 @@ Calling `setBorder` with all thin-grey first ensures no ghost borders persist wh
 
 *Full case study with screenshots → [Notion Portfolio](https://notion.so) (link TBD)*
 *→ Related: Case 03 daily pipeline feeds the monthly score data consumed by this system*
+
+---
+*Code available on request.*
