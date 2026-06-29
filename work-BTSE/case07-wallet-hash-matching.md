@@ -1,6 +1,6 @@
 # Case 07 — Crypto Wallet Transaction Auto-Matching System
 
-> **Role**: Payment Operations Analyst @ Nogle
+> **Role**: Payment Operations Analyst @ BTSE (Bestpay)
 > **Tools**: Google Apps Script · Google Sheets · Gmail API
 > **Trigger**: Auto-runs on data entry / manual force-run
 > **Scale**: 3 wallet types · 2 platforms (BestPay / HTPay) · used by OPS + OPS Finance + Company Finance + Settlement Team

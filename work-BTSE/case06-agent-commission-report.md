@@ -1,6 +1,6 @@
 # Case 06 — Monthly Agent Commission Report Automation
 
-> **Role**: Payment Operations Analyst @ Nogle
+> **Role**: Payment Operations Analyst @ BTSE (Bestpay)
 > **Tools**: Google Apps Script · Google Sheets
 > **Timeline**: Run monthly (first week, covering prior month)
 > **Scale**: 2 platforms (HTPay / BestPay) · multiple agents · 5+ currencies

@@ -1,6 +1,6 @@
 # Case 03 — Daily OPS Data Analysis System
 
-> **Role**: Payment Operations Analyst @ Nogle
+> **Role**: Payment Operations Analyst @ BTSE (Bestpay)
 > **Tools**: Google Apps Script · Google Sheets · Telegram Bot API · Slack API · Google Drive API
 > **Timeline**: Built iteratively → runs daily, auto-triggered; consolidation in progress
 > **Scale**: 30+ merchants · 8 currencies (CNY, VND, IDR, INR, PHP, THB, BDT, USDT) · 10+ PSPs

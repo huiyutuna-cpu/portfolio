@@ -1,6 +1,6 @@
 # Case 05 — PSP Monthly Score & Water Level Analysis System
 
-> **Role**: Payment Operations Analyst @ Nogle
+> **Role**: Payment Operations Analyst @ BTSE (Bestpay)
 > **Tools**: Google Apps Script · Google Sheets · Google Drive API
 > **Timeline**: Monthly use; run once per month to review and reset water levels
 > **Scale**: 8+ currencies · 10+ PSPs · spans multiple months of daily PSP data

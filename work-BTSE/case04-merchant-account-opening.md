@@ -1,6 +1,6 @@
 # Case 04 — Merchant Account Opening System
 
-> **Role**: Payment Operations Analyst @ Nogle
+> **Role**: Payment Operations Analyst @ BTSE (Bestpay)
 > **Tools**: Google Apps Script · Google Sheets · HTML/CSS/JS · Telegram Bot API
 > **Timeline**: Built as single-sprint feature; live and used by AM/CS teams
 > **Scale**: 30+ merchants · 8 fiat + 5 crypto currencies · Daily use by AM team

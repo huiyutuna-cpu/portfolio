@@ -1,6 +1,6 @@
 // ============================================================
 // Case 01 — USDT Payout Profit & Capital Flow Analysis
-// Google Apps Script | Author: Jas Yeh | Nogle, 2023–present
+// Google Apps Script | Author: Jas Yeh | BTSE (Bestpay), 2023–present
 //
 // SETUP: Replace the three spreadsheet ID placeholders below
 // with your actual IDs before running.

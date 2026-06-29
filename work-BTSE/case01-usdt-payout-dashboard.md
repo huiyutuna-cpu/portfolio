@@ -1,6 +1,6 @@
 # Case 01 — USDT Payout Profit & Capital Flow Dashboard
 
-> **Role**: Payment Operations Analyst @ Nogle
+> **Role**: Payment Operations Analyst @ BTSE (Bestpay)
 > **Tools**: Google Apps Script · Google Sheets · Chart.js · HTML/CSS
 > **Timeline**: 2–3 months build → fully automated, runs monthly
 

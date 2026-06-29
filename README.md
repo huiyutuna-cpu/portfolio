@@ -1,44 +1,50 @@
-# Huiyu (Jas) Yeh — Portfolio
+# Jas — Portfolio
 
-> Payment Operations Analyst → aspiring Product Manager
-> FinTech / Southeast Asia / Automation & Data
+> Payment Operations Analyst · Operations Automation · FinTech Southeast Asia
+> BTSE / Bestpay · 2023–present
 
 ---
 
 ## About Me
 
-3 years in payment operations at a crypto FinTech company, managing 30+ PSP channels across SEA markets (CNY, VND, IDR, INR, PHP, THB, USDT).
+3 years in payment operations at BTSE (Bestpay), managing 30+ PSP channels across SEA markets — CNY, VND, IDR, INR, PHP, THB, USDT — with 30,000+ transactions per month.
 
-My work sits at the intersection of **operations, data, and product thinking** — I build systems that turn messy manual workflows into scalable, automated processes.
+I build systems that turn messy manual workflows into automated, scalable processes. Beyond writing scripts, I collaborate closely with CS, Finance, Settlement, and PM teams — from designing SOPs (15+ OPS / 10+ CS) to pushing features into production backend systems.
 
-Currently transitioning toward product management, with a focus on user behavior, data-driven decisions, and 0→1 system design.
+What drives me: seeing someone actually use what I built, and not have to do that same manual work again.
+
+**Core strengths**: GAS automation · multi-currency reconciliation · cross-functional SOP design · data-driven ops analysis
 
 ---
 
-## Work Portfolio (Nogle, 2023–present)
+## Work Portfolio (BTSE / Bestpay, 2023–present)
 
 | # | Project | What it does | Tools |
 |---|---------|-------------|-------|
-| 01 | [USDT Payout Profit & Capital Flow Dashboard](./work-Nogle/case01-usdt-payout-dashboard.md) | Automated exchange rate margin tracking + merchant capital visibility for 30+ merchants | GAS, AppSheet, Chart.js |
-| 02 | [Monthly Merchant & Revenue Auto-Analysis](./work-Nogle/case02-monthly-merchant-revenue-analysis.md) | Monthly automated merchant KPI report: 30+ merchants, multi-currency revenue breakdown | GAS, Sheets |
-| 03 | [Daily OPS Data Analysis System](./work-Nogle/case03-daily-ops-data-analysis.md) | Daily automated analytics pipeline: 30+ merchants, 8 currencies, 10+ PSPs — PSP scoring, heatmaps, TG push | GAS, Telegram Bot, Slack API, Drive API |
-| 04 | CS Knowledge Base | *(coming soon)* | Confluence, GAS |
-| 05 | Merchant Management System | *(coming soon)* | AppSheet |
-| 06 | Channel Monitoring Dashboard | *(coming soon)* | GAS, Sheets |
+| 01 | [USDT Payout Profit & Capital Flow Dashboard](./work-BTSE/case01-usdt-payout-dashboard.md) | Automated exchange rate margin tracking + merchant capital visibility for 30+ merchants | GAS, AppSheet, Chart.js |
+| 02 | [Monthly Merchant & Revenue Auto-Analysis](./work-BTSE/case02-monthly-merchant-revenue-analysis.md) | Monthly automated merchant KPI report: 30+ merchants, multi-currency revenue breakdown | GAS, Sheets |
+| 03 | [Daily OPS Data Analysis System](./work-BTSE/case03-daily-ops-data-analysis.md) | Daily automated analytics pipeline: 30+ merchants, 8 currencies, 10+ PSPs — PSP scoring, heatmaps, TG push | GAS, Telegram Bot, Drive API |
+| 04 | [Merchant Account Opening System](./work-BTSE/case04-merchant-account-opening.md) | HTML form → GAS backend → Telegram Bot state machine; auto-routes new merchant data to OPS & CS | GAS, HTML, Telegram Bot API |
+| 05 | [PSP Monthly Scoring & Water Level Analysis](./work-BTSE/case05-psp-watermark-analysis.md) | Auto-calculates PSP performance grades, grade-weighted routing thresholds, fetches volume from Drive | GAS, Drive API |
+| 06 | [Monthly Agent Commission Report](./work-BTSE/case06-agent-commission-report.md) | Reads pivot tables + merchant mapping; generates per-agent sheets with full calendar, subtotals, fees (HTPay + BestPay) | GAS |
+| 07 | [Crypto Wallet Hash Auto-Matching Engine](./work-BTSE/case07-wallet-hash-matching.md) | Loads all source sheets into memory; matches 100+ rows via hash/UUID regex + amount-date fallback; unmatched → email alert | GAS, Gmail API |
+
+**Total impact**: 85% reduction in monthly manual work · 50–90 hours saved per month · near-zero unmatched rate on transaction reconciliation
 
 ---
 
 ## Skills
 
-**Automation**: Google Apps Script, AppSheet, Python
-**Data**: Google Sheets (QUERY / FILTER / SUMIFS / LET / ARRAYFORMULA), Excel
-**Product**: Confluence, Jira/JSM, SOP design, cross-functional stakeholder management
-**Design**: Photoshop, Illustrator, Canva, Rhino 3D
-**Other**: HTML, CSS, Chart.js
+**Automation**: Google Apps Script · AppSheet · HTML
+**Data Analysis**: Google Sheets advanced (QUERY / FILTER / SUMIFS / IMPORTRANGE / LET / ARRAYFORMULA) · Python (basic)
+**API Integrations**: Telegram Bot API · Gmail API · Google Drive API
+**Payments Domain**: PSP integration (S2S / Browser Redirect / PG-Hosted) · Callback verification · Settlement reconciliation · Chargeback rate management · Multi-currency ops
+**Collaboration**: Jira/JSM · Confluence · Notion · SOP design
+**Design**: Photoshop · Illustrator · Canva · Rhino 3D
+**Language**: Mandarin (native) · English (business communication)
 
 ---
 
 ## Contact
 
-- Email: huiyutuna@gmail.com
-- Location: New Taipei, Taiwan
+- Notion Portfolio: https://app.notion.com/p/Work-Portfolio-38c26712f60d80fbb405ddc253265823

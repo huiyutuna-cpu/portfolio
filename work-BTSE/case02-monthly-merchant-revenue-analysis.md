@@ -1,6 +1,6 @@
 # Case 02 — Monthly Merchant Volume & Revenue Analysis System
 
-> **Role**: Payment Operations Analyst @ Nogle
+> **Role**: Payment Operations Analyst @ BTSE (Bestpay)
 > **Tools**: Google Apps Script · Google Sheets · Telegram Bot API
 > **Timeline**: Built iteratively → runs monthly, output delivered via TG + Sheets
 > **GitHub**: [code](./code/case02_monthly_revenue_analysis.gs)
